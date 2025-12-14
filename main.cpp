@@ -18,6 +18,47 @@ private:
 	Node *head;
 	Node *tail;
 	int nodectr = 0;
+
+	// helper functions for the merge sorting algorithm //
+	
+	Node* getMiddle(Node *startNode) {
+		if (startNode == nullptr) return nullptr;
+
+		Node *one = startNode;
+		Node *two = startNode->next;
+		while (two != nullptr && two->next != nullptr) {
+			one = one->next;
+			two = two->next->next;
+		}
+		return one;
+	}
+
+	Node* merge(Node *left, Node *right) {
+		if (left == nullptr) return right;
+		if (right == nullptr) return left;
+
+		Node *result = nullptr;
+		if (left->data.id <= right->data.id) {
+			result = left;
+			result->next = merge(left->next, right);
+		} else {
+			result = right;
+			result->next = merge(left, right->next);
+		}
+		return result;
+	}
+
+	Node* mergeSortRec(Node *cur_h) {
+		if (cur_h == nullptr || cur_h->next == nullptr) return cur_h;
+
+		Node *middle = getMiddle(cur_h);
+		Node *nextToMiddle = middle->next;
+		middle->next = nullptr;
+
+		Node *left = mergeSortRec(cur_h);
+		Node *right = mergeSortRec(nextToMiddle);
+		return merge(left, right);
+	}
 public:
 	SRecords()
 		: head(nullptr), tail(nullptr) {}
@@ -78,6 +119,18 @@ public:
 				--nodectr;
 			}
 		}
+	}
+
+	void sortStudents(void) {
+		if (head == nullptr || head->next == nullptr) return;
+		head = mergeSortRec(head);
+
+		// Re-positioning the tail after sorting //
+
+		Node *it = head;
+		while (it->next != nullptr) it = it->next;
+		tail = it;
+		std::cout << "Students sorted by ID (Merge Sort).\n";
 	}
 
 	Student* searchStudentLinear(int s_id) {
