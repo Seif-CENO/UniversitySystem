@@ -79,6 +79,30 @@ public:
 			}
 		}
 	}
+
+	void displayStudents(void) {
+		if (head == nullptr) {
+			std::cout << "------------------------\n";
+			std::cout << "Student Record is Empty.\n";
+			std::cout << "------------------------\n";
+			return;
+		}
+
+		Node *it = head;
+		std::cout << "\n=== Registered Students (" << nodectr << ") ===\n";
+		while (it != nullptr) {
+			std::cout << "--------------------------------------------\n";
+			std::cout << "Student:  " << it->data.name << '\n';
+			std::cout << "ID:       " << it->data.id << '\n';
+			std::cout << "Email:    " << it->data.email << '\n';
+			std::cout << "Address:  " << it->data.address << '\n';
+			std::cout << "Phone:    " << it->data.phone << '\n';
+			std::cout << "Password: " << it->data.password << '\n';
+
+			it = it->next;
+		}
+		std::cout << "--------------------------------------------\n";
+	}
 };
 
 int main(void) {
