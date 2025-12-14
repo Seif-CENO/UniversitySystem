@@ -19,7 +19,7 @@ private:
 	Node *tail;
 	int nodectr = 0;
 
-	// helper functions for the merge sorting algorithm //
+	// Helper functions for Merge Sorting algorithm //
 	
 	Node* getMiddle(Node *startNode) {
 		if (startNode == nullptr) return nullptr;
@@ -58,6 +58,23 @@ private:
 		Node *left = mergeSortRec(cur_h);
 		Node *right = mergeSortRec(nextToMiddle);
 		return merge(left, right);
+	}
+
+	// Helper functions for Binary Search algorithm //
+	
+	Node* getMiddleBinary (Node *first, Node *last) {
+		if (first == nullptr) return nullptr;
+
+		Node *one = first;
+		Node *two = first->next;
+		while (two != last) {
+			two = two->next;
+			if (two != last) {
+				one = one->next;
+				two = two->next;
+			}
+		}
+		return one;
 	}
 public:
 	SRecords()
@@ -138,6 +155,22 @@ public:
 		while (it != nullptr) {
 			if (it->data.id == s_id) return &it->data;
 			it = it->next;
+		}
+		return nullptr;
+	}
+
+	Student* searchStudentBinary(int s_id) {
+		sortStudents();
+		Node *first = head;
+		Node *last = nullptr;
+
+		while (first != last) {
+			Node *mid = getMiddleBinary(first, last);
+			if (mid == nullptr) return nullptr;
+
+			if (mid->data.id == s_id) return &mid->data;
+			else if (mid->data.id > s_id) last = mid;
+			else first = mid->next;
 		}
 		return nullptr;
 	}
