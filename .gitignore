@@ -1,0 +1,11 @@
+# CLion specific
+.idea/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+Makefile
+
+# Compiled files
+*.exe
+*.o
