@@ -80,6 +80,15 @@ public:
 		}
 	}
 
+	Student* searchStudentLinear(int s_id) {
+		Node *it = head;
+		while (it != nullptr) {
+			if (it->data.id == s_id) return &it->data;
+			it = it->next;
+		}
+		return nullptr;
+	}
+
 	void displayStudents(void) {
 		if (head == nullptr) {
 			std::cout << "------------------------\n";
