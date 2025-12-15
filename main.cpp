@@ -204,12 +204,17 @@ class SHashTable {
 private:
 	static const int tsize = 100;
 	SRecords table[tsize];
-
+	
+	// Helper (hashing) function //
+	
 	void hash(int s_id) {
 		return s_id % tsize;
 	}
 public:
-	
+	void insertStudent(Student newStudent) {
+		int index = hash(newStudent.id);
+		table[index].addStudent(newStudent);
+	}
 };
 
 int main(void) {
