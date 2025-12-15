@@ -225,19 +225,17 @@ public:
 	}
 
 	bool empty(void) {
-
+		return top == nullptr;
 	}
 
 	void push(int c_id) {
-
+		Node *newNode = new Node(c_id);
+		newNode->next = top;
+		top = newNode;
 	}
 
 	void pop(void) {
-
-	}
-
-	int peek(void) {
-
+	
 	}
 };
 
