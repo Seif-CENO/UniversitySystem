@@ -200,6 +200,18 @@ public:
 	}
 };
 
+class SHashTable {
+private:
+	static const int tsize = 100;
+	SRecords table[tsize];
+
+	void hash(int s_id) {
+		return s_id % tsize;
+	}
+public:
+	
+};
+
 int main(void) {
 	
 	return 0;
