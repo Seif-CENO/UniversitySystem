@@ -268,6 +268,92 @@ public:
 };
 
 int main(void) {
+	std::cout << "=================================\n";
+	std::cout << "  Test 1: LINKED LIST & SORTING  \n";
+	std::cout << "=================================\n";
+
+	SRecords myRec;
 	
+	// Add Students (unsorted) //
+	std::cout << "[Action] Adding students with IDs: 300, 100, 200...\n";
+	myRec.addStudent({300, "Alice", "alice@test.com", "City A", "123", "pass1"});
+	myRec.addStudent({100, "Bob", "Bob@test.com", "City B", "456", "pass2"});
+	myRec.addStudent({200, "Zeina", "Zeina@test.com", "City C", "789", "pass3"});
+
+	// Display Students (unsorted) //
+	std::cout << "\n-------List Before Sorting-------\n";
+	myRec.displayStudents();
+
+	// Sorting Students (Using Merge Sort Algorithm) //
+	std::cout << "[Action] Calling sortStudents()...\n";
+	myRec.sortStudents();
+
+	// Display Students post-sorting //
+	std::cout << "\n-------List After Sorting-------\n";
+	myRec.displayStudents();
+
+	// Test Binary Search //
+	std::cout << "\n[Action] Binary Searching for ID 200...\n";
+	Student *st = myRec.searchStudentBinary(200);
+	if (st) std::cout << "SUCCESS: Found " << st->name << " (ID: " << st->id << ")\n";
+	else std::cout << "FAILED: ID 200 not found.\n";
+
+	std::cout << "=================================\n";
+	std::cout << "        Test 2: Hash Table       \n";
+        std::cout << "=================================\n";
+
+	SHashTable myHash;
+
+	// Inserting Students //
+	std::cout << "[Action] Inserting IDs 105, 205, and 99 into Hash Table...\n";
+	myHash.insertStudent({105, "Dave", "dave@test.com", "City D", "000", "pass4"});
+	myHash.insertStudent({205, "Eve", "eve@test.com", "City E", "111", "pass5"});
+	myHash.insertStudent({99, "Frank", "frank@test.com", "City F", "222", "pass6"});
+
+	// Searching for Students //
+	std::cout << "[Actions] Searching for ID 205 (Collision Case)...\n";
+	Student *st2 = myHash.searchStudent(205);
+	if (st2) std::cout << "SUCCESS: Found " << st2->name << " (ID: " << st2->id << ") in Hash Table.\n";
+	else std::cout << "FAILED: ID 205 not found.\n";
+
+	// Searching for non-existent Student //
+	std::cout << "[Action] Searching for ID 999 (Non-existent)...\n";
+	Student *missing = myHash.searchStudent(999);
+	if (!missing) std::cout << "SUCCESS: Correctly returned nullptr for missing student.\n";
+	else std::cout << "FAILED: Found a student that shouldn't exist???\n";
+
+	std::cout << "=================================\n";
+        std::cout << "    Test 3: Prerequisite Stack   \n";
+        std::cout << "=================================\n";
+
+	PrereqStack myStack;
+
+	// Testing empty() method //
+	if (myStack.empty()) std::cout << "SUCCESS: Stack is initially empty.\n";
+
+	// Pushing Prerequisites //
+	std::cout << "[Action] Pushing courses: 101 -> 102 -> 103\n";
+	myStack.push(101);
+	myStack.push(102);
+	myStack.push(103);
+
+	// Peeking the top element //
+	try {
+		std::cout << "Top of stack (Peek): " << myStack.peek() << " (Expected: 103)\n";
+	} catch (const std::exception &e) {
+		std::cout << "ERROR: " << e.what() << '\n';
+	}
+
+	// Popping until stack is empty //
+	std::cout << "[Action] Popping all items:\n";
+	while (!myStack.empty()) {
+		std::cout << "Popped: " << myStack.peek() << '\n';
+		myStack.pop();
+	}
+
+	// Verify Emptiness //
+	if (myStack.empty()) std::cout << "SUCCESS: Stack is empty again.\n";
+
+	std::cout << "\n\n=======ALL TESTS ARE COMPLETED=======\n";
 	return 0;
 }
