@@ -5,7 +5,7 @@ struct Student {
 	std::string name, email, address, phone, password;
 };
 
-class SRecords {
+class SRecords {          // By SEIF ALLAH //
 private:
 	struct Node {
 		Student data;
@@ -101,6 +101,7 @@ public:
 		++nodectr;
 	}
 
+	// Handled edge cases & the new (Node *tail) node //
 	void deleteStudent(int s_id) {
 		if (nodectr == 0) throw std::out_of_range("Cannot deleteStudent() from an empty Student Record.");
 		else if (nodectr == 1) {
@@ -200,7 +201,7 @@ public:
 	}
 };
 
-class SHashTable {
+class SHashTable {          // By SEIF ALLAH //
 private:
 	static const int tsize = 100;
 	SRecords table[tsize];
@@ -222,7 +223,7 @@ public:
 	}
 };
 
-class PrereqStack {
+class PrereqStack {          // By SEIF ALLAH //
 private:
 	struct Node {
 		int courseID;
