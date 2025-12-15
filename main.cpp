@@ -222,6 +222,51 @@ public:
 	}
 };
 
+class PrereqStack {
+private:
+	struct Node {
+		int courseID;
+		Node *next;
+
+		Node(int c_id)
+			: courseID(c_id), next(nullptr) {}
+		~Node() = default;
+	};
+	Node *top;
+public:
+	PrereqStack()
+		: top(nullptr) {}
+	~PrereqStack() {
+		while (top != nullptr) {
+			Node *anchor = top;
+			top = top->next;
+			delete anchor;
+		}
+	}
+
+	bool empty(void) {
+		return top == nullptr;
+	}
+
+	int peek(void) {
+		if (empty()) throw std::out_of_range("Cannot peek() on an empty Prerequisite Stack.");
+		return top->courseID;
+	}
+
+	void push(int c_id) {
+		Node *newNode = new Node(c_id);
+		newNode->next = top;
+		top = newNode;
+	}
+
+	void pop(void) {
+		if (empty()) throw std::out_of_range("Cannot pop() from an empty Prerequisite Stack.");
+		Node *anchor = top;
+		top = top->next;
+		delete anchor;
+	}
+};
+
 int main(void) {
 	
 	return 0;
