@@ -200,6 +200,47 @@ public:
 	}
 };
 
+
+
+class PrereqStack {
+private:
+	struct Node {
+		int courseID;
+		Node *next;
+
+		Node(int c_id)
+			: courseID(c_id), next(nullptr) {}
+		~Node() = default;
+	};
+	Node *top;
+public:
+	PrereqStack()
+		: top(nullptr) {}
+	~PrereqStack() {
+		while (top != nullptr) {
+			Node *anchor = top;
+			top = top->next;
+			delete anchor;
+		}
+	}
+
+	bool empty(void) {
+
+	}
+
+	void push(int c_id) {
+
+	}
+
+	void pop(void) {
+
+	}
+
+	int peek(void) {
+
+	}
+};
+
 int main(void) {
 	
 	return 0;
