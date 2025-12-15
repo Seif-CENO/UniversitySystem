@@ -56,4 +56,4 @@ This project relies on `g++`. No external libraries are required.
 <br>
 
 ### Personal Reminder:
-This is the first project I make implementing custom data structures without relying on existing STL libraries, and using git/github for version controlling.
+This is the first serious project I made as a Sophomore implementing custom data structures without relying on existing STL libraries, and using git/github for version controlling.
