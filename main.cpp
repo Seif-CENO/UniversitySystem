@@ -207,13 +207,18 @@ private:
 	
 	// Helper (hashing) function //
 	
-	void hash(int s_id) {
+	int hash(int s_id) {
 		return s_id % tsize;
 	}
 public:
 	void insertStudent(Student newStudent) {
 		int index = hash(newStudent.id);
 		table[index].addStudent(newStudent);
+	}
+
+	Student* searchStudent(int s_id) {
+		int index = hash(s_id);
+		return table[index].searchStudentLinear(s_id);
 	}
 };
 
