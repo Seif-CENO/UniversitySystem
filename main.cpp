@@ -228,6 +228,11 @@ public:
 		return top == nullptr;
 	}
 
+	int peek(void) {
+		if (empty()) throw std::out_of_range("Cannot peek() on an empty Prerequisite Stack.");
+		return top->courseID;
+	}
+
 	void push(int c_id) {
 		Node *newNode = new Node(c_id);
 		newNode->next = top;
@@ -235,7 +240,10 @@ public:
 	}
 
 	void pop(void) {
-	
+		if (empty()) throw std::out_of_range("Cannot pop() from an empty Prerequisite Stack.");
+		Node *anchor = top;
+		top = top->next;
+		delete anchor;
 	}
 };
 
