@@ -26,13 +26,13 @@ This system is built upon three custom-implemented data structures:
 ##  Algorithms & Complexity:
 
 In case you're looking for the time complexities of the programs here's a table specified for calculating the **time complexity** of the methods used in this project:
-| Operation | Algorithm | Time Complexity |
-| :--- | :--- | :--- |
-| **Sort** | Merge Sort (Recursive) | $O(n \log n)$ |
-| **Search** | Binary Search | $O(\log n)$ |
-| **Search** | Linear Search | $O(n)$ |
-| **Insert** | Tail-Optimized Append | $O(1)$ |
-| **Access** | Hash Table Lookup | $O(1)$ (Avg) |
+| Operation | Algorithm | Time Complexity | Notes |
+| :--- | :--- | :--- | :--- |
+| **Sort** | Merge Sort (Recursive) | $O(n \log n)$ | _ |
+| **Search** | Binary Search | $O(n)$ | $O(\log n)$ comparisons, but linear traversal. |
+| **Search** | Linear Search | $O(n)$ | _ |
+| **Insert** | Tail-Optimized Append | $O(1)$ | _ |
+| **Access** | Hash Table Lookup | $O(1)$ (Avg) | _ |
 
 ---
 
